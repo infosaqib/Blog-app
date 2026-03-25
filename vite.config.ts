@@ -6,16 +6,14 @@ import { defineConfig, type Plugin } from 'vite';
 
 function apiDocsPlugin(): Plugin {
     return {
-        name: 'api-docs',
+        name: 'api-docs-url',
         configureServer(server) {
-            server.httpServer?.once('listening', () => {
-                setTimeout(() => {
-                    server.config.logger.info(
-                        `  \x1b[32m➜\x1b[0m  API Docs: \x1b[36mhttp://localhost:8000/api/documentation\x1b[0m`,
-                        { clear: false }
-                    );
-                }, 100);
-            });
+            const _print = server.printUrls.bind(server);
+            server.printUrls = () => {
+                _print();
+                const appUrl = process.env.APP_URL ?? 'http://localhost:8000';
+                console.log(`  \x1b[32m➜\x1b[0m  \x1b[1mAPI Docs:\x1b[0m  \x1b[36m${appUrl}/docs/api\x1b[0m`);
+            };
         },
     };
 }
@@ -27,6 +25,7 @@ export default defineConfig({
             ssr: 'resources/js/ssr.ts',
             refresh: true,
         }),
+        apiDocsPlugin(),
         tailwindcss(),
         vue({
             template: {
@@ -39,6 +38,5 @@ export default defineConfig({
         wayfinder({
             formVariants: true,
         }),
-        apiDocsPlugin(),
     ],
 });
