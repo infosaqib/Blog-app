@@ -10,6 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "dedoc/scramble": "^0.13.16",
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^13.0",
         "laravel/tinker": "^3.0",
@@ -48,6 +49,8 @@
             "npm run build"
         ],
         "dev": [
+            "@php artisan l5-swagger:generate --ansi",
+            "@php -r \"echo PHP_EOL.'  '.chr(27).'[32m➜'.chr(27).'[0m  API Docs: http://localhost:8000/api/documentation'.PHP_EOL.PHP_EOL;\"",
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1 --timeout=0\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
         ],

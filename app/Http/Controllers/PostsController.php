@@ -2,49 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Http\JsonResponse;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 
 class PostsController extends Controller
 {
-    public function index()
+    public function index(): JsonResponse
     {
         $posts = Post::with('user')->get();
-        return  $posts;
+        return response()->json($posts);
     }
-    public function show($post)
+
+    public function show($post): JsonResponse
     {
         $posts = Post::find($post);
-        return $posts;
+        return response()->json($posts);
     }
 
-    public function searchPosts()
+    public function searchPosts(): JsonResponse
     {
         $post = Post::where('id', 1)->get();
-        return $post;
+        return response()->json($post);
     }
 
-    public function store(CreatePostRequest $request)
+    public function store(CreatePostRequest $request): JsonResponse
     {
-
         $data = $request->only(['title', 'body', 'userId']);
         $data['title'] = trim($data['title']);
         $post = Post::create($data);
-        return $post;
+        return response()->json($post, 201);
     }
 
-    public function update(UpdatePostRequest $request, $post)
+    public function update(UpdatePostRequest $request, $post): JsonResponse
     {
         $data = $request->only(['title', 'body']);
         $post = Post::find($post);
         $post->update($data);
-        return $post;
+        return response()->json($post);
     }
 
-    public function destroy($post)
+    public function destroy($post): JsonResponse
     {
         $post = Post::find($post);
         $post->delete();
