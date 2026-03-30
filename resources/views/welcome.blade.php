@@ -1,4 +1,5 @@
-<h1 class="text-center text-red-500">{{ config('app.name') }}</h1>
+@includeif('common.common', ['page' => 'Welcome'])
+<x-alert message="Welcome to the site" state="info"/>
 <nav>
     <ul class="flex justify-center space-x-4">
         <li><a href="{{ route('home') }}">Home</a></li>

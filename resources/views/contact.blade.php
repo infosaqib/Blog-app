@@ -1,3 +1,2 @@
-<div>
-    Order your soul. Reduce your wants. - Augustine
-</div>
+@includeif('common.header', ['page' => 'Contact'])
+<h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur nisi quos iure nulla quasi quod odit quam, ratione unde similique autem aliquam sed facere, reiciendis culpa. Vitae suscipit iste sit reiciendis possimus quod odit!</h3>

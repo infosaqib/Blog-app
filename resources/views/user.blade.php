@@ -1,3 +1,4 @@
+@includeif('common.header', ['page' => 'Users'])
 <h3>User id: {{ rand() }}</h3>
 @if($name === 'joe')
     <h1>User is {{ $name }}</h1>

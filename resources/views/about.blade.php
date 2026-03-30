@@ -1,1 +1,2 @@
-<h1>About Us</h1>
+@includeif('common.header', ['page' => 'About us'])
+<h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam iure maiores quam atque culpa quo commodi officiis veritatis, laboriosam eligendi placeat doloremque temporibus asperiores. Mollitia rem velit cumque sint aut cupiditate dolor! Ad, hic.</h2>
