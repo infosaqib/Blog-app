@@ -14,10 +14,15 @@ class UserController extends Controller
     }
     public function login()
     {
-        if (View::exists('admin.login')) {
-            return view('admin.login');
+        if (View::exists('user-form')) {
+            return view('user-form');
         } else {
             echo 'No View Found';
         }
+    }
+
+    public function addUser(Request $request)
+    {
+        return $request;
     }
 }

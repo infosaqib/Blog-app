@@ -21,3 +21,4 @@ Route::get('/home/{name?}', function ($name = null) {
 Route::get('/user/{name}', [UserController::class, 'getUser'])->name('user');
 
 Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('adduser', [UserController::class, 'addUser']);
