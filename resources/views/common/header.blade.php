@@ -23,6 +23,7 @@
                 <a href="{{ route('about') }}" style="margin-right:20px;color:#fff;text-decoration:none;">About</a>
                 <a href="{{ route('contact') }}" style="margin-right:20px;color:#fff;text-decoration:none;">Contact</a>
                 <a href="{{ route('login') }}" style="margin-right:20px;color:#fff;text-decoration:none;">Login</a>
+                <a href="{{ route('register') }}" style="margin-right:20px;color:#fff;text-decoration:none;">Register</a>
             </nav>
 
             <button

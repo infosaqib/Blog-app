@@ -14,15 +14,34 @@ class UserController extends Controller
     }
     public function login()
     {
-        if (View::exists('user-form')) {
-            return view('user-form');
+        if (View::exists('auth.login')) {
+            return view('auth.login');
+        } else {
+            echo 'No View Found';
+        }
+    }
+    public function register()
+    {
+        if (View::exists('auth.register')) {
+            return view('auth.register');
         } else {
             echo 'No View Found';
         }
     }
 
+    public function loginUser(Request $request)
+    {
+        return $request;
+    }
     public function addUser(Request $request)
     {
+        $request->validate([
+            'name' => 'required | min:3 | max:6',
+            'email' => 'required | email',
+            'gender' => 'required',
+            'country' => 'required',
+            'hobbies' => 'required',
+        ]);
         return $request;
     }
 }

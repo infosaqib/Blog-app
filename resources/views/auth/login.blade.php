@@ -1,3 +1,27 @@
+@includeif('common.header', ['page' => 'Login'])
+<div style="display: flex;flex-direction: column; justify-content: center;align-items: center;">
+
+    <div class="form-container">
+        <h2>Sign In</h2>
+
+        <form action="loginuser" method="post">
+            @csrf
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <button type="submit">Sign In</button>
+        </form>
+
+    </div>
+</div>
+
 <style>
     .form-container {
         background: #fff;
@@ -55,25 +79,3 @@
         font-size: 14px;
     }
 </style>
-
-
-
-<div class="form-container">
-    <h2>Sign In</h2>
-
-    <form action="adduser" method="post">
-        @csrf
-        <div class="input-group">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="Enter your email" required>
-        </div>
-
-        <div class="input-group">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Enter your password" required>
-        </div>
-
-        <button type="submit">Sign In</button>
-    </form>
-
-</div>
