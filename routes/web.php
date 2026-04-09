@@ -18,14 +18,17 @@ Route::get('/home/{name?}', function ($name = null) {
     return view('home', ['name' => $name]);
 })->name('home');
 
+//Route group with controller
+Route::controller(UserController::class)->group(function () {
+    Route::get('/user/{name}', 'getUser')->name('user');
+    Route::post('adduser', 'addUser');
+    Route::post('loginuser', 'loginUser');
 
-Route::get('/user/{name}', [UserController::class, 'getUser'])->name('user');
-Route::post('adduser', [UserController::class, 'addUser']);
-Route::post('loginuser', [UserController::class, 'loginUser']);
+    Route::get('/login', 'login')->name('login');
+    Route::get('/register', 'register')->name('register');
+});
 
-Route::get('/login', [UserController::class, 'login'])->name('login');
-Route::get('/register', [UserController::class, 'register'])->name('register');
-
+//Route group with prefix
 Route::prefix('product')->group(function () {
     Route::get('/index', [ProductController::class, 'index']);
     Route::get('/show', [ProductController::class, 'show']);
