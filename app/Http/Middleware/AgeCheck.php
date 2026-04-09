@@ -15,7 +15,9 @@ class AgeCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        echo 'echo from middleware';
+        if($request->age<18){
+            die("Not allowed to visit this page"); 
+        }
         return $next($request);
     }
 }

@@ -19,18 +19,22 @@ Route::get('/home/{name?}', function ($name = null) {
 })->name('home');
 
 //Route group with controller
-Route::controller(UserController::class)->group(function () {
+Route::controller(UserController::class)
+//Group middleware
+->middleware('guard')
+->group(function () {
     Route::get('/user/{name}', 'getUser')->name('user');
-    Route::post('adduser', 'addUser');
+    Route::post('adduser', 'addUser')->withoutMiddleware('guard');
     Route::post('loginuser', 'loginUser');
 
     Route::get('/login', 'login')->name('login');
     Route::get('/register', 'register')->name('register');
 });
 
+
 //Route group with prefix
 Route::prefix('product')->group(function () {
-    Route::get('/index', [ProductController::class, 'index']);
+    Route::get('/index', [ProductController::class, 'index'])->middleware('guard');;
     Route::get('/show', [ProductController::class, 'show']);
     Route::get('/store', [ProductController::class, 'store']);
 });
