@@ -16,16 +16,16 @@ Route::redirect('/welcome', '/');
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact')->middleware([CountryCheck::class, RequestLogger::class]);
 
-Route::get('/home/{name?}', function ($name = null) {
+Route::get('/home/', function ($name = null) {
     return view('home', ['name' => $name]);
 })->name('home')->middleware(CountryCheck::class);
 
 //Route group with controller
 Route::controller(UserController::class)
 //Group middleware
-->middleware('guard')
+// ->middleware('guard')
 ->group(function () {
-    Route::get('/user/{name}', 'getUser')->name('user');
+    Route::get('/user', 'getUser')->name('user');
     Route::post('adduser', 'addUser')->withoutMiddleware('guard');
     Route::post('loginuser', 'loginUser');
 
