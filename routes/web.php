@@ -17,27 +17,34 @@ Route::redirect('/welcome', '/');
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact')->middleware([CountryCheck::class, RequestLogger::class]);
 
-Route::get('/home/', function ($name = null) {
+Route::get('/home', function ($name = null) {
     return view('home', ['name' => $name]);
 })->name('home')->middleware(CountryCheck::class);
 
 //Route group with controller
 Route::controller(UserController::class)
-//Group middleware
+    //Group middleware
 // ->middleware('guard')
-->group(function () {
-    Route::get('/user', 'getUser')->name('user');
-    Route::post('adduser', 'addUser')->withoutMiddleware('guard');
-    Route::post('loginuser', 'loginUser');
-
-    Route::get('/login', 'login')->name('login');
-    Route::get('/register', 'register')->name('register');
-});
+    ->group(function () {
+        Route::get('/user', 'getUser')->name('user');
+        Route::post('adduser', 'addUser')->withoutMiddleware('guard');
+        Route::post('loginuser', 'loginUser');
+        Route::put('updateuser', 'updateUser');
+        Route::delete('users/{id}', 'deleteUser');
+        
+        Route::get('/users', 'index');
+        Route::get('/users/verified', 'getVerifiedUsers');
+        Route::get('/users/first', 'getFirstUser');
+        Route::get('/login', 'login')->name('login');
+        Route::get('/register', 'register')->name('register');
+        Route::get('/setting', 'setting')->name('setting');
+    });
 
 
 //Route group with prefix
 Route::prefix('product')->group(function () {
-    Route::get('/index', [ProductController::class, 'index'])->middleware('guard');;
+    Route::get('/index', [ProductController::class, 'index'])->middleware('guard');
+    ;
     Route::get('/{id}', [ProductController::class, 'show']);
     Route::get('/store', [ProductController::class, 'store']);
 });
