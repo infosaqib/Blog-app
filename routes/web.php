@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\LibraryController;
 use App\Http\Middleware\CountryCheck;
 use App\Http\Middleware\RequestLogger;
 
@@ -40,3 +41,6 @@ Route::prefix('product')->group(function () {
     Route::get('/show', [ProductController::class, 'show']);
     Route::get('/store', [ProductController::class, 'store']);
 });
+
+//Library routes
+Route::get('/library', [LibraryController::class, 'index'])->name('library');
