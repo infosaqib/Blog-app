@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -10,9 +10,10 @@ class ProductController extends Controller
     {
         return 'Products list';
     }
-    public function show()
+    public function show($id)
     {
-        return 'Product successfully returned';
+        $product = Http::get("https://dummyjson.com/products/{$id}");
+        return view('product', ['product' => $product]);
     }
     public function store()
     {

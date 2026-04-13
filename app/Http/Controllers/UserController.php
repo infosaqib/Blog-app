@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Rules\Uppercase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function getUser($name)
+    public function getUser()
     {
-        $users = ['bilal', 'zain', 'uzair'];
-        return view('user', ['name' => $name, 'users' => $users]);
+        $users = DB::select('select * from users');
+        // dd($users);
+        return view('user', ['users' => $users]); 
     }
     public function login()
     {
