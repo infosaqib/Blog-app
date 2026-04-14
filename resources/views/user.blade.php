@@ -1,6 +1,10 @@
 @includeif('common.header', ['page' => 'Users'])
 <h3>User id: {{ rand() }}</h3>
-<!-- <p>{{ print_r($users) }}</p> -->
+@if(session('user'))
+    <p>Welcome {{ session('user') }}</p>
+@else
+    <p>No user found</p>
+@endif
 
 <table border="true">
     <tr>
@@ -28,3 +32,4 @@
         @endforeach
     @endisset
 </table>
+<a href="logout" style="background-color: lime;padding:8px;color:white">Logout</a>
