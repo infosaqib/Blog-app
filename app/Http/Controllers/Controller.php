@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 /**
  * @OA\Info(
- *     title="Laravel API",
+ *     title="Blogsite API",
  *     version="1.0.0",
- *     description="API documentation for Laravel App"
+ *     description="Blogsite REST API documentation"
  * )
  *
  * @OA\Server(
- *     url="/api/v1",
+ *     url="/api",
  *     description="API Server"
  * )
  */

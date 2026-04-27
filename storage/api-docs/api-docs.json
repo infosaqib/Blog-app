@@ -1,13 +1,13 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Laravel API",
-        "description": "API documentation for Laravel App",
+        "title": "Blogsite API",
+        "description": "Blogsite REST API documentation",
         "version": "1.0.0"
     },
     "servers": [
         {
-            "url": "/api/v1",
+            "url": "/api",
             "description": "API Server"
         }
     ],
@@ -21,7 +21,7 @@
                 "operationId": "bc35b0dccb591514504ae7025aa06cf5",
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "OK"
                     }
                 }
             },
@@ -29,7 +29,7 @@
                 "tags": [
                     "Posts"
                 ],
-                "summary": "Create a new post",
+                "summary": "Create a post",
                 "operationId": "9ccefc026f76d6c7d6e8c77fc480ac86",
                 "requestBody": {
                     "required": true,
@@ -60,9 +60,6 @@
                 "responses": {
                     "201": {
                         "description": "Created"
-                    },
-                    "422": {
-                        "description": "Validation error"
                     }
                 }
             }
@@ -86,7 +83,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "OK"
                     },
                     "404": {
                         "description": "Not found"
@@ -129,10 +126,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Updated"
-                    },
-                    "404": {
-                        "description": "Not found"
+                        "description": "OK"
                     }
                 }
             },
@@ -155,9 +149,6 @@
                 "responses": {
                     "200": {
                         "description": "Deleted"
-                    },
-                    "404": {
-                        "description": "Not found"
                     }
                 }
             }
@@ -167,11 +158,11 @@
                 "tags": [
                     "Posts"
                 ],
-                "summary": "Search posts",
+                "summary": "Search posts by ID 1",
                 "operationId": "99b7130c4cbcdcfdca82ec138b8af1ab",
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "OK"
                     }
                 }
             }
