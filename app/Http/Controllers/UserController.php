@@ -113,8 +113,11 @@ class UserController extends Controller
             'hobbies' => json_encode($request->hobbies)
         ]);
 
+        $request->session()->flash('message', 'User has been registered successfully');
+        $request->session()->put('user', $request->name);
+
         if ($result) {
-            echo 'Data inserted successfully';
+            return redirect('register');
         } else {
             echo 'Data could not inserted';
         }

@@ -129,13 +129,17 @@
 
 <div id="bg">
     <h1>STUDENT REGISTRATION FORM</h1>
+    <p style="color: white;">{{ session('message') }}</p>
+    <p style="color: yellow;">{{ session('user') }}</p>
+    <!-- {{ session()->reflash() }} -->
+    <!-- {{ session()->keep(['user']) }} -->
     <div id="form">
         @if($errors->any())
             @foreach ($errors->all() as $error)
                 <p>{{ $error }}</p>
             @endforeach
         @endif
-        <form method="post" action="adduser">
+        <form method="post" action="register">
             <div class="form-row">
                 <div class="form-label">NAME:</div>
                 <div class="form-field">
