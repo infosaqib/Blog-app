@@ -11,6 +11,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Post;
 use App\Models\Library;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable(['name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
@@ -32,17 +35,18 @@ class User extends Authenticatable
         ];
     }
 
-    public function posts()
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-    public function library()
+    public function library(): HasOne
     {
         return $this->hasOne(Library::class);
     }
 
-    public function roles(){
+    public function roles(): BelongsToMany
+    {
         return $this->belongsToMany(Role::class, 'user_role');
     }
 }

@@ -61,6 +61,8 @@ Route::prefix('/library')->group(function () {
 
 //Posts routes
 Route::get('posts', [PostController::class, 'getAllPosts'])->name('posts');
+Route::get('posts/lazy', [PostController::class, 'getLazyPosts']);
+Route::get('posts/load', [PostController::class, 'LoadPosts']);
 Route::get('posts/first', [PostController::class, 'getFirstPost']);
 Route::get('posts/search', [PostController::class, 'searchPosts']);
 Route::get('posts/create', [PostController::class, 'createPost']);

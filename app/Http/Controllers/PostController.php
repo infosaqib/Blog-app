@@ -19,8 +19,30 @@ class PostController extends Controller
     }
     public function getAllPosts()
     {
-      return Post::with('user')->select('title', 'description', 'user_id')->get(); //Objects
+        //with() - Eager Loading (optimzed)
+        return Post::with('user')->select('title', 'description', 'user_id')->get(); //Objects
         // return Post::pluck('title'); // Array of titles
+    }
+    public function LoadPosts()
+    {
+        //load() - eager loading
+        $needUser = true;
+        $posts = Post::all();
+        if ($needUser) {
+            foreach ($posts as $post) {
+                $post->load('user');
+            }
+        }
+        return $posts;
+    }
+    public function getLazyPosts()
+    {
+        //Without Eager Loading
+        $posts = Post::all();
+        foreach ($posts as $post) {
+            $post->user;
+        }
+        return $posts;
     }
     public function orderedPosts()
     {
@@ -38,8 +60,8 @@ class PostController extends Controller
     public function searchPosts()
     {
         return Post::where('title', 'Rose')
-        ->orWhere('description', 'Lorem')
-        ->get();
+            ->orWhere('description', 'Lorem')
+            ->get();
     }
     public function LimitedPosts(Request $request)
     {
