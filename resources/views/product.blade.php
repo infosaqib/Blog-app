@@ -1,4 +1,10 @@
 @includeif('common.header', ['page' => 'Products'])
+<style>
+    .w-5.h-5 {
+        width: 10px;
+    }
+
+</style>
 <div">
     <table border="true">
         <tr>
@@ -17,4 +23,7 @@
             @endforeach
         @endisset
     </table>
+    <div>
+        {{ $products->links() }}
+    </div>
     </div>
