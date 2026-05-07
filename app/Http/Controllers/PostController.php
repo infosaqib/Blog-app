@@ -59,9 +59,8 @@ class PostController extends Controller
     }
     public function searchPosts()
     {
-        return Post::where('title', 'Rose')
-            ->orWhere('description', 'Lorem')
-            ->get();
+        //scope usage
+        return Post::desc('king')->get();
     }
     public function LimitedPosts(Request $request)
     {
