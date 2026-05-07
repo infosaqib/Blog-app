@@ -12,7 +12,7 @@ class PostObserver
     public function creating(Post $post): void
     {
         if(!$post->image){
-            $post->image = 'https://unsplash.com/s/photos/black';
+            $post->image = 'https://picsum.photos/400/400';
         }
     }
 
