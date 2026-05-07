@@ -71,8 +71,7 @@ class PostController extends Controller
         return Post::create([
             'user_id' => 2,
             'title' => 'Black Diamond',
-            'description' => 'Shinny Star on Earth',
-            'image' => 'https://unsplash.com/?search=diamond'
+            'description' => 'No more',
         ]);
     }
     public function updatePosts()
