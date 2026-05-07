@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -28,5 +29,10 @@ class Post extends Model
             get: fn($value) => strtoupper($value),
             set: fn($value) => strtolower($value)
         );
+    }
+//scope
+    public function scopeDesc(Builder $query, $description): Builder
+    {
+        return $query->where('description', 'like', "%{$description}%");
     }
 }
