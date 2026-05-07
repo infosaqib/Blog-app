@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\StorageController;
 use App\Http\Middleware\CountryCheck;
 use App\Http\Middleware\RequestLogger;
 
@@ -74,3 +75,7 @@ Route::get('posts/limit/{limit}', [PostController::class, 'LimitedPosts']);
 Route::get('posts/{id}', [PostController::class, 'getPostById']);
 Route::any('any', [PostController::class, 'any'])->name('any');
 Route::match(['get', 'post'], 'match', [PostController::class, 'match'])->name('match');
+
+//Storage Routes
+Route::get('upload', [StorageController::class, 'index'])->name('storage');
+Route::post('upload', [StorageController::class, 'upload']);

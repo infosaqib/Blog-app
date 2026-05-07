@@ -7,6 +7,11 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    public function index()
+    {
+        $posts = Post::select('title', 'description', 'image')->get();
+        return view('posts', compact('posts'));
+    }
     public function any()
     {
         echo 'any function called with method ';
